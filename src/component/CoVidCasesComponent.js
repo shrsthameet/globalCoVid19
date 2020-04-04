@@ -6,13 +6,14 @@ import CardComponent from "../reusableComponents/CardComponent";
 
 const CoVidCasesComponent = () => {
 	const {coVidCases} = useContext(CoVidCaseContext);
-	const {cases, deaths, recovered, active} = coVidCases;
+	const {total_cases, total_deaths, total_recovered, new_cases} = coVidCases;
+	console.log('cases',total_cases, total_deaths, total_recovered, new_cases);
 	return (
 		<>
 			<Row gutter={16}>
 				<CardComponent
 					title='Total Confirmed Cases'
-					cases={cases}
+					cases={total_cases}
 					color='#e6f7ff'
 					image='/images/patients.png'
 					textColor='#000000'
@@ -20,7 +21,7 @@ const CoVidCasesComponent = () => {
 
 				<CardComponent
 					title='Total Recovered Cases'
-					cases={recovered}
+					cases={total_recovered}
 					color='#eaff8f'
 					image='/images/recovered.png'
 					textColor='#000000'
@@ -30,15 +31,15 @@ const CoVidCasesComponent = () => {
 			<Row gutter={16} style={{marginBottom: 20, marginTop: 10}}>
 				<CardComponent
 					title='Total Deaths'
-					cases={deaths}
+					cases={total_deaths}
 					color='#f5222d'
 					image='/images/totalDeaths.png'
 					textColor='#ffffff'
 				/>
 
 				<CardComponent
-					title='Active Cases'
-					cases={active}
+					title='New Cases'
+					cases={new_cases}
 					color='#b5f5ec'
 					image='/images/people.png'
 					textColor='#000000'
