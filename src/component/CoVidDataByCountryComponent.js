@@ -1,15 +1,21 @@
 import React, {useEffect, useState, useContext} from "react";
 
-import {Form, Col} from "antd";
 import {CoVidByCountryContext} from "../ContextAPI/CovVidByCountryContext";
+
 import CountrySearchFormComponent from "./CountrySearchFormComponent";
 import CountryCoVidDataComponent from "./CountryCoVidDataComponent";
 import CountryCoVidDataLoading from "./CountryCoVidDataLoading";
 
+import {Form, Col} from "antd";
+
 
 const CoVidDataByCountryComponent = () => {
+	//	State
 	const [show, setShow] = useState(false);
+
+	//	Importing data from CoVidByCountryContext after fetching API
 	const {fetchData, countryStat, isLoading} = useContext(CoVidByCountryContext);
+
 	const [form] = Form.useForm();
 	const [, forceUpdate] = useState(); // To disable submit button at the beginning.
 
@@ -17,6 +23,7 @@ const CoVidDataByCountryComponent = () => {
 		forceUpdate({});
 	}, []);
 
+	//	Trigger submit event and send data entered by user to CoVidByCountryContext to fetch API
 	const handleSubmit = (values) => {
 		const country = values.country;
 		fetchData(country);
@@ -25,7 +32,6 @@ const CoVidDataByCountryComponent = () => {
 
 	return (
 		<>
-			{/*<Title level={4}>Search your country</Title>*/}
 			<Col>
 				<Form form={form} onFinish={handleSubmit} initialValues={{remember: true}}>
 					<CountrySearchFormComponent form={form}/>

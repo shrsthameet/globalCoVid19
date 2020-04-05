@@ -1,29 +1,26 @@
 import React from "react";
-import {Row, Col, Statistic} from "antd";
-
-const cardStyle = {
-	background: "#ffffff",
-	padding: 30,
-	textAlign: "center",
-	border: "1px solid #D3D3D3"
-};
+import {Row, Col, Card} from "antd";
 
 const CountryCoVidDataLoading = () => {
 	return (
-		<Row style={cardStyle}>
-			<Col span={6}>
-				<Statistic title='Total Cases' value={0}/>
-			</Col>
-			<Col span={6}>
-				<Statistic title="Active Cases" value={0}/>
-			</Col>
-			<Col span={6}>
-				<Statistic title="Total Deaths" value={0}/>
-			</Col>
-			<Col span={6}>
-				<Statistic title="Total Recovered" value={0}/>
-			</Col>
-		</Row>
+		<>
+			<Card>
+				<Row>
+					<Col span={16}>
+						<p>Total Cases:</p>
+						<p>Active Cases:</p>
+						<p>Total Deaths:</p>
+						<p>Total Recovered:</p>
+					</Col>
+					<Col span={8}>
+						<p>0</p>
+						<p>0</p>
+						<p>0</p>
+						<p>0</p>
+					</Col>
+				</Row>
+			</Card>
+		</>
 	);
 };
 

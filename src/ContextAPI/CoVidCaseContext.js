@@ -30,8 +30,6 @@ const CoVidCaseContextProvider = (props) => {
 		fetchCoVidCase();
 	}, []);
 
-	console.log(coVidCases)
-
 	return (
 		<CoVidCaseContext.Provider value={{coVidCases, isLoading}}>
 			{props.children}

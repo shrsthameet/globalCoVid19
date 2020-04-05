@@ -69,7 +69,7 @@ const CoVidWorldDataContextProvider = (props) => {
 
 
 	return (
-		<CoVidWorldDataContext.Provider value={{columns, data}}>
+		<CoVidWorldDataContext.Provider value={{columns, data, worldData}}>
 			{props.children}
 		</CoVidWorldDataContext.Provider>
 	);

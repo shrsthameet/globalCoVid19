@@ -9,6 +9,7 @@ const CoVidByCountryContextProvider = (props) => {
 
 
 	async function fetchData(country) {
+		console.log('fetchbycountry',country);
 		setIsLoading(true);
 		const result = await axios
 			.get(`https://coronavirus-monitor.p.rapidapi.com/coronavirus/latest_stat_by_country.php?country=${country}`, {
@@ -17,9 +18,12 @@ const CoVidByCountryContextProvider = (props) => {
 					"x-rapidapi-key": "9fed399570msh663b031bcdef2b4p1c0023jsnb006081f81ed"
 				}
 			},);
+		console.log(result);
 		setCountryStat(result.data.latest_stat_by_country);
 		setIsLoading(false);
 	}
+
+	console.log(countryStat);
 
 	return (
 		<CoVidByCountryContext.Provider value={{fetchData, countryStat, isLoading}}>

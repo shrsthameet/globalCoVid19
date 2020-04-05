@@ -1,13 +1,15 @@
 import React, {useContext} from "react";
 import {CoVidCaseContext} from "../ContextAPI/CoVidCaseContext";
 
-import {Row} from "antd";
 import CardComponent from "../reusableComponents/CardComponent";
 
+import {Row} from "antd";
+
+
 const CoVidCasesComponent = () => {
+	//	Importing data from CoVidCaseContext after fetching API
 	const {coVidCases} = useContext(CoVidCaseContext);
 	const {total_cases, total_deaths, total_recovered, new_cases} = coVidCases;
-	console.log('cases',total_cases, total_deaths, total_recovered, new_cases);
 	return (
 		<>
 			<Row gutter={16}>
@@ -41,11 +43,10 @@ const CoVidCasesComponent = () => {
 					title='New Cases'
 					cases={new_cases}
 					color='#b5f5ec'
-					image='/images/people.png'
+					image='/images/hospital-bed.png'
 					textColor='#000000'
 				/>
 			</Row>
-
 		</>
 
 	);

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useContext} from "react";
 import {
 	withScriptjs,
 	withGoogleMap,
@@ -6,7 +6,7 @@ import {
 	Marker
 } from "react-google-maps";
 import {compose, withProps} from "recompose";
-import axios from "axios";
+import {CoVidWorldDataContext} from "../ContextAPI/CoVidWorldDataContext";
 
 const CoVidWorldMapComponent = compose(
 	withProps({
@@ -19,30 +19,16 @@ const CoVidWorldMapComponent = compose(
 	withScriptjs,
 	withGoogleMap
 )(() => {
-	const [country, setCountry] = useState([]);
-
-	// Fetching API
-	async function fetchData() {
-		const response = await axios({
-			method: "GET",
-			url:
-				"https://corona.lmao.ninja/countries?fbclid=IwAR3mzozGuX74TDJ4YIJ-wTJgMW1Gzmdinq5-Qfqtad80LQuW2Hh1zdxfuUU"
-		});
-		const data = await response.data;
-		setCountry(data);
-	}
-
-	useEffect(() => {
-		fetchData();
-	}, []);
+	//	Importing data from CoVidWorldDataContext after fetching API
+	const {worldData} = useContext(CoVidWorldDataContext);
 
 	return (
 		<GoogleMap
 			defaultZoom={4}
 			defaultCenter={{lat: 26.4831, lng: 80.33333}}
 		>
-			{country.map((res, i) => {
-				const {countryInfo, cases} = res;
+			{worldData.map(res => {
+				const {countryInfo} = res;
 				const {long, lat, _id} = countryInfo;
 				return (
 					<Marker key={_id} position={{lat: lat, lng: long}}/>
@@ -52,3 +38,4 @@ const CoVidWorldMapComponent = compose(
 	);
 });
 export default CoVidWorldMapComponent;
+
