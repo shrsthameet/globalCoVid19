@@ -49,7 +49,7 @@ const CoVidWorldDataContextProvider = (props) => {
 
   async function fetchCoVidWorldData() {
     const response = await axios.get(
-      "https://corona.lmao.ninja/countries?fbclid=IwAR3AEMVx3jWFDfm-mXxEWtvHZhd_4enAWLc5ynMB5fBFKvFYFWjcgODVVPY"
+      "https://corona.lmao.ninja/v2/countries?fbclid=IwAR3AEMVx3jWFDfm-mXxEWtvHZhd_4enAWLc5ynMB5fBFKvFYFWjcgODVVPY"
     );
     const data = await response.data;
     setWorldData(data);
